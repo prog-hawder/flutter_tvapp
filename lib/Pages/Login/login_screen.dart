@@ -14,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+    Color _color = Colors.transparent;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -85,15 +86,35 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          },
+          backgroundColor: Color(0xFF7D4DF1),
+          child:  Focus(
+        onFocusChange: (focused) {
+          setState(() {
+            _color = focused ? Colors.black : Colors.transparent;
+          });
         },
-        backgroundColor: Color(0xFF7D4DF1),
-        child: Icon(Icons.arrow_forward_ios_rounded),
-      ),
+            child: Container(
+                height: 90,
+                width: 90,
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(100),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: _color,
+                        spreadRadius: 10,
+                        blurRadius: 2,
+                      )
+                    ]),
+                child: Icon(Icons.arrow_forward_ios_rounded)),
+          ),
+        ),
     );
   }
 }
-
-

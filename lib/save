@@ -1,0 +1,22 @@
+ListView.builder(
+                itemCount: _PlantasList.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: ((context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      child: Image(image: AssetImage(_PlantasList[index].img,),fit: BoxFit.cover,),
+                      decoration: BoxDecoration(
+                          color: Colors.grey,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black,
+                                blurRadius: 5.0,
+                                spreadRadius: 0.9)
+                          ]),
+                      width: 200,
+                    ),
+                  );
+                })),
+
+                image: _Backgroundimg[index].img,
